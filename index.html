@@ -1,10 +1,352 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome & Onboarding</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      /* Floral, Star, and Heart Pattern Background */
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 182, 193, 0.4) 0%, transparent 8%),
+        radial-gradient(circle at 85% 15%, rgba(173, 216, 230, 0.4) 0%, transparent 8%),
+        radial-gradient(circle at 50% 80%, rgba(255, 223, 186, 0.4) 0%, transparent 10%),
+        radial-gradient(circle at 80% 75%, rgba(221, 160, 221, 0.4) 0%, transparent 8%);
+      background-attachment: fixed;
+      padding: 20px;
+    }
+
+    /* Screen Container */
+    .screen {
+      display: none;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      text-align: center;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Welcome Screen Styling */
+    .welcome-card {
+      cursor: pointer;
+      padding: 40px 20px;
+    }
+
+    .welcome-title {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .welcome-marathi {
+      font-size: 2.2rem;
+      color: #e67e22;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .decor-icons {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      letter-spacing: 8px;
+    }
+
+    .tap-hint {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #3498db;
+      color: #ffffff;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    /* Form Elements */
+    .form-group {
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1.5px solid #dcdde1;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #ffffff;
+    }
+
+    input:focus, select:focus {
+      border-color: #3498db;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: #2ecc71;
+      border: none;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #27ae60;
+    }
+
+    /* Dynamic Themes for Screen 3 */
+    body.theme-eye { background-color: #eef9ff; }
+    body.theme-ent { background-color: #f5f0ff; }
+    body.theme-ortho { background-color: #f0fdf4; }
+    body.theme-cardio { background-color: #fff0f0; }
+    body.theme-general-doc { background-color: #f4f6f7; }
+    body.theme-pharmacy { background-color: #e8f8f5; }
+    body.theme-clothing { background-color: #fef5e7; }
+    body.theme-grocery { background-color: #f9ebea; }
+    body.theme-hardware { background-color: #ebedef; }
+
+    /* Trial Notice Cards */
+    .notice-box {
+      background: #f8f9fa;
+      border-left: 4px solid #2ecc71;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .notice-box h4 {
+      font-size: 0.8rem;
+      color: #7f8c8d;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .notice-box p {
+      font-size: 0.92rem;
+      color: #2c3e50;
+      line-height: 1.4;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>My web application is live!</p>
+
+  <div id="screen1" class="screen active welcome-card" onclick="nextScreen(2)">
+    <div class="decor-icons">🌿 🌸 ⭐ 💖 🍃</div>
+    <div class="welcome-title">Welcome</div>
+    <div class="welcome-marathi">स्वागतम्</div>
+    <div class="decor-icons">✨ 💙 🌺 ✨ 💛</div>
+    <div class="tap-hint">Tap anywhere to continue</div>
+  </div>
+
+  <div id="screen2" class="screen">
+    <h2 style="margin-bottom: 20px; color: #2c3e50;">Account Registration</h2>
+    
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="Enter your full name">
+    </div>
+
+    <div class="form-group">
+      <label for="mainCategory">Select Category</label>
+      <select id="mainCategory" onchange="handleCategoryChange()">
+        <option value="">-- Choose Category --</option>
+        <option value="doctor">Doctor / Healthcare Facility</option>
+        <option value="medical">Medical Store / Pharmacy</option>
+        <option value="business">Retail / Commercial Business</option>
+        <option value="patient">End-User / Patient</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="subCategoryGroup" style="display: none;">
+      <label for="subCategory">Select Specialization / Trade</label>
+      <select id="subCategory"></select>
+    </div>
+
+    <button class="btn" onclick="goToScreen3()">Next Step &rarr;</button>
+  </div>
+
+  <div id="screen3" class="screen">
+    <h2 style="margin-bottom: 20px; color: #2c3e50;">Setup Account Security</h2>
+
+    <div class="form-group">
+      <label for="region">Select Region</label>
+      <select id="region">
+        <option value="rural">Rural</option>
+        <option value="urban">Urban</option>
+        <option value="metropolitan">Metropolitan</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Create Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm password">
+    </div>
+
+    <button class="btn" onclick="goToScreen4()">Complete Registration</button>
+  </div>
+
+  <div id="screen4" class="screen">
+    <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
+    <h2 style="margin-bottom: 20px; color: #2c3e50;">Registration Complete!</h2>
+
+    <div class="notice-box">
+      <h4>English</h4>
+      <p>Your 7-Day Free Trial is Active! No payment required today. Subscription billing will begin automatically after 7 days.</p>
+    </div>
+
+    <div class="notice-box">
+      <h4>मराठी (Marathi)</h4>
+      <p>तुमचा ७ दिवसांचा विनामूल्य ट्रायल सुरू झाला आहे! आज कोणतेही शुल्क नाही. ७ दिवसांनंतर सबस्क्रिप्शन बिलिंग आपोआप सुरू होईल.</p>
+    </div>
+
+    <div class="notice-box">
+      <h4>हिंदी (Hindi)</h4>
+      <p>आपका 7 दिनों का मुफ्त ट्रायल एक्टिव है! आज कोई शुल्क नहीं देना है। 7 दिनों के बाद सब्सक्रिप्शन बिलिंग अपने आप शुरू हो जाएगी।</p>
+    </div>
+
+    <button class="btn" style="background: #3498db;" onclick="alert('Proceeding to Dashboard...')">Go to Dashboard</button>
+  </div>
+
+  <script>
+    const subCategories = {
+      doctor: [
+        { val: "eye", label: "Ophthalmologist (Eye Specialist)" },
+        { val: "ent", label: "ENT Specialist (Ear, Nose, Throat)" },
+        { val: "ortho", label: "Orthopedic (Bone & Joint Specialist)" },
+        { val: "cardio", label: "Cardiologist (Heart Specialist)" },
+        { val: "derma", label: "Dermatologist (Skin Specialist)" },
+        { val: "pediatric", label: "Pediatrician (Child Specialist)" },
+        { val: "dental", label: "Dentist (Dental Care)" },
+        { val: "general_doc", label: "General Physician / Internal Medicine" },
+        { val: "gyno", label: "Gynecologist & General Hospital" }
+      ],
+      medical: [
+        { val: "pharmacy", label: "General Retail Pharmacy" },
+        { val: "eye_pharmacy", label: "Ophthalmic / Eye Care Pharmacy" },
+        { val: "ortho_pharmacy", label: "Orthopedic & Surgical Equipment Store" },
+        { val: "wholesale_pharmacy", label: "Wholesale Pharmaceutical Distributor" },
+        { val: "ayurvedic", label: "Ayurvedic & Herbal Medicine Shop" }
+      ],
+      business: [
+        { val: "grocery", label: "Grocery & Supermarket" },
+        { val: "clothing", label: "Clothing, Apparel & Fashion Boutique" },
+        { val: "hardware", label: "Hardware & Building Materials" },
+        { val: "electronics", label: "Electronics & Mobile Store" },
+        { val: "hotel", label: "Hotel, Restaurant & Cafe" },
+        { val: "wholesale_biz", label: "Wholesale General Merchant" },
+        { val: "footwear", label: "Footwear & Leather Goods" },
+        { val: "jewelry", label: "Jewelry & Accessories" },
+        { val: "stationery", label: "Stationery & Book Shop" }
+      ],
+      patient: [
+        { val: "standard_user", label: "Standard Personal Account" }
+      ]
+    };
+
+    function nextScreen(screenNum) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen' + screenNum).classList.add('active');
+    }
+
+    function handleCategoryChange() {
+      const mainCat = document.getElementById('mainCategory').value;
+      const subGroup = document.getElementById('subCategoryGroup');
+      const subSelect = document.getElementById('subCategory');
+
+      subSelect.innerHTML = '';
+
+      if (mainCat && subCategories[mainCat]) {
+        subCategories[mainCat].forEach(item => {
+          const opt = document.createElement('option');
+          opt.value = item.val;
+          opt.textContent = item.label;
+          subSelect.appendChild(opt);
+        });
+        subGroup.style.display = 'block';
+      } else {
+        subGroup.style.display = 'none';
+      }
+    }
+
+    function goToScreen3() {
+      const name = document.getElementById('fullName').value;
+      const mainCat = document.getElementById('mainCategory').value;
+
+      if (!name || !mainCat) {
+        alert('Please fill in your name and choose a category.');
+        return;
+      }
+
+      // Apply dynamic visual theme based on selection
+      const subVal = document.getElementById('subCategory').value;
+      document.body.className = ''; // Reset class
+      if (['eye', 'ent', 'ortho', 'cardio', 'general_doc', 'pharmacy', 'clothing', 'grocery', 'hardware'].includes(subVal)) {
+        document.body.classList.add('theme-' + subVal);
+      }
+
+      nextScreen(3);
+    }
+
+    function goToScreen4() {
+      const pass = document.getElementById('password').value;
+      const confirmPass = document.getElementById('confirmPassword').value;
+
+      if (!pass || pass !== confirmPass) {
+        alert('Passwords do not match or are empty!');
+        return;
+      }
+
+      nextScreen(4);
+    }
+  </script>
 </body>
-</html>
+          </html>
+
