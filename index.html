@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome & Onboarding</title>
   <style>
+    /* Reset basic layout defaults */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -12,47 +13,79 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Base body setup with multi-colored vibrant radial gradient background */
     body {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #ffffff;
-      /* Floral, Star, and Heart Pattern Background */
+      background-color: #fdfaf6;
       background-image: 
-        radial-gradient(circle at 15% 20%, rgba(255, 182, 193, 0.4) 0%, transparent 8%),
-        radial-gradient(circle at 85% 15%, rgba(173, 216, 230, 0.4) 0%, transparent 8%),
-        radial-gradient(circle at 50% 80%, rgba(255, 223, 186, 0.4) 0%, transparent 10%),
-        radial-gradient(circle at 80% 75%, rgba(221, 160, 221, 0.4) 0%, transparent 8%);
+        radial-gradient(circle at 15% 20%, rgba(255, 182, 193, 0.7) 0%, transparent 20%),
+        radial-gradient(circle at 85% 15%, rgba(173, 216, 230, 0.7) 0%, transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255, 223, 186, 0.7) 0%, transparent 25%),
+        radial-gradient(circle at 80% 75%, rgba(221, 160, 221, 0.7) 0%, transparent 20%),
+        radial-gradient(circle at 20% 85%, rgba(168, 230, 207, 0.7) 0%, transparent 20%);
       background-attachment: fixed;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease;
     }
 
-    /* Screen Container */
+    /* Floating background shapes container */
+    .bg-decorations {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-icon {
+      position: absolute;
+      font-size: 1.6rem;
+      opacity: 0.35;
+      animation: floatAnim 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatAnim {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-18px) rotate(12deg); }
+    }
+
+    /* Card styling for each onboarding step */
     .screen {
       display: none;
       width: 100%;
       max-width: 480px;
       background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
       padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.8);
       text-align: center;
+      position: relative;
+      z-index: 1;
       animation: fadeIn 0.4s ease-in-out;
     }
 
+    /* Active screen toggle class */
     .screen.active {
       display: block;
     }
 
+    /* Smooth screen entry animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Welcome Screen Styling */
+    /* Screen 1 styling */
     .welcome-card {
       cursor: pointer;
       padding: 40px 20px;
@@ -89,7 +122,7 @@
       font-weight: 600;
     }
 
-    /* Form Elements */
+    /* Form input styling */
     .form-group {
       text-align: left;
       margin-bottom: 18px;
@@ -136,18 +169,18 @@
       background: #27ae60;
     }
 
-    /* Dynamic Themes for Screen 3 */
-    body.theme-eye { background-color: #eef9ff; }
-    body.theme-ent { background-color: #f5f0ff; }
-    body.theme-ortho { background-color: #f0fdf4; }
-    body.theme-cardio { background-color: #fff0f0; }
-    body.theme-general-doc { background-color: #f4f6f7; }
-    body.theme-pharmacy { background-color: #e8f8f5; }
-    body.theme-clothing { background-color: #fef5e7; }
-    body.theme-grocery { background-color: #f9ebea; }
-    body.theme-hardware { background-color: #ebedef; }
+    /* Dynamic background theme colors */
+    body.theme-eye { background-color: #d0f0fd !important; }
+    body.theme-ent { background-color: #ebd9ff !important; }
+    body.theme-ortho { background-color: #d1f7dc !important; }
+    body.theme-cardio { background-color: #ffd6d6 !important; }
+    body.theme-general_doc { background-color: #e2e8f0 !important; }
+    body.theme-pharmacy { background-color: #cbf3ec !important; }
+    body.theme-clothing { background-color: #fde2b4 !important; }
+    body.theme-grocery { background-color: #fbc7c7 !important; }
+    body.theme-hardware { background-color: #d5dbdb !important; }
 
-    /* Trial Notice Cards */
+    /* Trial notice cards styling */
     .notice-box {
       background: #f8f9fa;
       border-left: 4px solid #2ecc71;
@@ -173,6 +206,21 @@
 </head>
 <body>
 
+  <!-- ==================== BACKGROUND DECORATIVE SHAPES ==================== -->
+  <div class="bg-decorations">
+    <span class="bg-icon" style="top: 8%; left: 8%;">🌿</span>
+    <span class="bg-icon" style="top: 12%; right: 10%;">💖</span>
+    <span class="bg-icon" style="top: 25%; left: 82%;">⭐</span>
+    <span class="bg-icon" style="top: 40%; left: 6%;">✨</span>
+    <span class="bg-icon" style="top: 55%; right: 12%;">🍃</span>
+    <span class="bg-icon" style="top: 70%; left: 10%;">🌸</span>
+    <span class="bg-icon" style="top: 85%; right: 8%;">🌺</span>
+    <span class="bg-icon" style="top: 88%; left: 75%;">💛</span>
+    <span class="bg-icon" style="top: 30%; left: 15%;">💙</span>
+    <span class="bg-icon" style="top: 65%; left: 85%;">✨</span>
+  </div>
+
+  <!-- ==================== SCREEN 1: WELCOME GATEWAY ==================== -->
   <div id="screen1" class="screen active welcome-card" onclick="nextScreen(2)">
     <div class="decor-icons">🌿 🌸 ⭐ 💖 🍃</div>
     <div class="welcome-title">Welcome</div>
@@ -181,6 +229,7 @@
     <div class="tap-hint">Tap anywhere to continue</div>
   </div>
 
+  <!-- ==================== SCREEN 2: REGISTRATION & CATEGORY ==================== -->
   <div id="screen2" class="screen">
     <h2 style="margin-bottom: 20px; color: #2c3e50;">Account Registration</h2>
     
@@ -200,16 +249,23 @@
       </select>
     </div>
 
+    <!-- Sub-category dropdown dynamically generated by JS -->
     <div class="form-group" id="subCategoryGroup" style="display: none;">
       <label for="subCategory">Select Specialization / Trade</label>
-      <select id="subCategory"></select>
+      <select id="subCategory" onchange="applyThemeImmediately()"></select>
     </div>
 
     <button class="btn" onclick="goToScreen3()">Next Step &rarr;</button>
   </div>
 
+  <!-- ==================== SCREEN 3: MOBILE, REGION & PASSWORD ==================== -->
   <div id="screen3" class="screen">
-    <h2 style="margin-bottom: 20px; color: #2c3e50;">Setup Account Security</h2>
+    <h2 style="margin-bottom: 20px; color: #2c3e50;">Contact & Security</h2>
+
+    <div class="form-group">
+      <label for="mobileNumber">Mobile Number</label>
+      <input type="tel" id="mobileNumber" placeholder="Enter your 10-digit mobile number" maxlength="10">
+    </div>
 
     <div class="form-group">
       <label for="region">Select Region</label>
@@ -233,6 +289,7 @@
     <button class="btn" onclick="goToScreen4()">Complete Registration</button>
   </div>
 
+  <!-- ==================== SCREEN 4: TRILINGUAL TRIAL NOTICE ==================== -->
   <div id="screen4" class="screen">
     <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
     <h2 style="margin-bottom: 20px; color: #2c3e50;">Registration Complete!</h2>
@@ -255,6 +312,7 @@
     <button class="btn" style="background: #3498db;" onclick="alert('Proceeding to Dashboard...')">Go to Dashboard</button>
   </div>
 
+  <!-- ==================== LOGIC & NAVIGATION SCRIPT ==================== -->
   <script>
     const subCategories = {
       doctor: [
@@ -311,13 +369,24 @@
           subSelect.appendChild(opt);
         });
         subGroup.style.display = 'block';
+        applyThemeImmediately(); // Apply background as soon as category is populated
       } else {
         subGroup.style.display = 'none';
+        document.body.className = '';
+      }
+    }
+
+    /* Changes body theme immediately when sub-category is selected */
+    function applyThemeImmediately() {
+      const subVal = document.getElementById('subCategory').value;
+      document.body.className = ''; 
+      if (['eye', 'ent', 'ortho', 'cardio', 'general_doc', 'pharmacy', 'clothing', 'grocery', 'hardware'].includes(subVal)) {
+        document.body.classList.add('theme-' + subVal);
       }
     }
 
     function goToScreen3() {
-      const name = document.getElementById('fullName').value;
+      const name = document.getElementById('fullName').value.trim();
       const mainCat = document.getElementById('mainCategory').value;
 
       if (!name || !mainCat) {
@@ -325,19 +394,18 @@
         return;
       }
 
-      // Apply dynamic visual theme based on selection
-      const subVal = document.getElementById('subCategory').value;
-      document.body.className = ''; // Reset class
-      if (['eye', 'ent', 'ortho', 'cardio', 'general_doc', 'pharmacy', 'clothing', 'grocery', 'hardware'].includes(subVal)) {
-        document.body.classList.add('theme-' + subVal);
-      }
-
       nextScreen(3);
     }
 
     function goToScreen4() {
+      const mobile = document.getElementById('mobileNumber').value.trim();
       const pass = document.getElementById('password').value;
       const confirmPass = document.getElementById('confirmPassword').value;
+
+      if (!mobile || mobile.length < 10) {
+        alert('Please enter a valid 10-digit mobile number.');
+        return;
+      }
 
       if (!pass || pass !== confirmPass) {
         alert('Passwords do not match or are empty!');
@@ -348,5 +416,4 @@
     }
   </script>
 </body>
-          </html>
-
+</html>
