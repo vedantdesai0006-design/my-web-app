@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -398,8 +398,7 @@
     }
 
     function goToScreen4() {
-      const mobile = document.getElementById('mobileNumber').value.trim();
-      const pass = document.getElementById('password').value;
+      const mobile = document.getElementById('mobileNumber').value.trim();      const pass = document.getElementById('password').value;
       const confirmPass = document.getElementById('confirmPassword').value;
 
       if (!mobile || mobile.length < 10) {
@@ -409,11 +408,4 @@
 
       if (!pass || pass !== confirmPass) {
         alert('Passwords do not match or are empty!');
-        return;
-      }
-
-      nextScreen(4);
-    }
-  </script>
-</body>
-</html>
+        return 
